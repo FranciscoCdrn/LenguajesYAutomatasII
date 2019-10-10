@@ -1,5 +1,7 @@
 package lya;
+
 public class ParseException extends Exception {
+
   private static final long serialVersionUID = 1L;
   public ParseException(Token currentTokenVal,
                         int[][] expectedTokenSequencesVal,
@@ -11,16 +13,22 @@ public class ParseException extends Exception {
     expectedTokenSequences = expectedTokenSequencesVal;
     tokenImage = tokenImageVal;
   }
+
   public ParseException() {
     super();
   }
 
+  /** Constructor with message. */
   public ParseException(String message) {
     super(message);
   }
+
   public Token currentToken;
+
   public int[][] expectedTokenSequences;
+
   public String[] tokenImage;
+
   private static String initialise(Token currentToken,
                            int[][] expectedTokenSequences,
                            String[] tokenImage) {
@@ -64,16 +72,8 @@ public class ParseException extends Exception {
     return retval;
   }
 
-  /**
-   * The end of line string for this machine.
-   */
   protected String eol = System.getProperty("line.separator", "\n");
 
-  /**
-   * Used to convert raw characters to their escaped version
-   * when these raw version cannot be used as part of an ASCII
-   * string literal.
-   */
   static String add_escapes(String str) {
       StringBuffer retval = new StringBuffer();
       char ch;
@@ -118,4 +118,5 @@ public class ParseException extends Exception {
       }
       return retval.toString();
    }
+
 }

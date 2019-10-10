@@ -1,4 +1,5 @@
 package lya;
+
 public interface testConstants {
 
   /** End of File. */
