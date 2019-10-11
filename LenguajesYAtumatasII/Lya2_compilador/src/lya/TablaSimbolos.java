@@ -1,5 +1,5 @@
 package lya;
-
+ 
 public class TablaSimbolos {
 	private String tipoDato;
 	private int posicion;

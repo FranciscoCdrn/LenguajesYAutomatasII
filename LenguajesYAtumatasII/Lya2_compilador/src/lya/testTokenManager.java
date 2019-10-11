@@ -1,5 +1,6 @@
 package lya;
 
+
 /** Token Manager. */
 public class testTokenManager implements testConstants
 {
@@ -191,7 +192,7 @@ static private int jjStartNfaWithStates_0(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_0(state, pos + 1);
 }
-@SuppressWarnings({ "unused", "static-access" })
+@SuppressWarnings({ "static-access", "unused" })
 static private int jjMoveNfa_0(int startState, int curPos)
 {
    int startsAt = 0;

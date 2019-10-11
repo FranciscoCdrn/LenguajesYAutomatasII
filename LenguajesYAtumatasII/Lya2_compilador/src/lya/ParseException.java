@@ -3,6 +3,7 @@ package lya;
 public class ParseException extends Exception {
 
   private static final long serialVersionUID = 1L;
+
   public ParseException(Token currentTokenVal,
                         int[][] expectedTokenSequencesVal,
                         String[] tokenImageVal
@@ -13,12 +14,11 @@ public class ParseException extends Exception {
     expectedTokenSequences = expectedTokenSequencesVal;
     tokenImage = tokenImageVal;
   }
-
+  
   public ParseException() {
     super();
   }
 
-  /** Constructor with message. */
   public ParseException(String message) {
     super(message);
   }
