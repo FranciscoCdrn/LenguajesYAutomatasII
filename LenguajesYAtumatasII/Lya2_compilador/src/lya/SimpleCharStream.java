@@ -1,4 +1,3 @@
-
 package lya;
 
 public class SimpleCharStream
@@ -464,5 +463,4 @@ public class SimpleCharStream
     line = bufline[j];
     column = bufcolumn[j];
   }
-
 }

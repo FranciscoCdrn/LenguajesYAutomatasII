@@ -14,7 +14,7 @@ public class ParseException extends Exception {
     expectedTokenSequences = expectedTokenSequencesVal;
     tokenImage = tokenImageVal;
   }
-  
+
   public ParseException() {
     super();
   }

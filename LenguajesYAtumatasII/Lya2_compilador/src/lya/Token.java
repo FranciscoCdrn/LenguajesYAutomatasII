@@ -1,9 +1,5 @@
 package lya;
 
-/**
- * Describes the input token stream.
- */
-
 public class Token implements java.io.Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -19,9 +15,6 @@ public class Token implements java.io.Serializable {
   /** The column number of the last character of this Token. */
   public int endColumn;
 
-  /**
-   * The string image of the token.
-   */
   public String image;
 
   public Token next;
@@ -45,9 +38,6 @@ public class Token implements java.io.Serializable {
     this.image = image;
   }
 
-  /**
-   * Returns the image.
-   */
   public String toString()
   {
     return image;
