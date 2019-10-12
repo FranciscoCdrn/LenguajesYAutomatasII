@@ -15,7 +15,6 @@ public class ParseException extends Exception {
     tokenImage = tokenImageVal;
   }
 
-
   public ParseException() {
     super();
   }
@@ -74,6 +73,9 @@ public class ParseException extends Exception {
     return retval;
   }
 
+  /**
+   * The end of line string for this machine.
+   */
   protected String eol = System.getProperty("line.separator", "\n");
 
   static String add_escapes(String str) {

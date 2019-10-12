@@ -4,10 +4,10 @@ options
 	FORCE_LA_CHECK = true;
 }
 
-PARSER_BEGIN(test) 
+PARSER_BEGIN(test)
 	package MyAnalizador;
 	import java.util.*;
-	public class test{ 
+	public class test{  
 		static class Identifier{
 			String name;
 			String type;

@@ -1,6 +1,8 @@
 package lya;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
 public class AnalisisSemantico {
 	ArrayList<String> linea = new ArrayList<String>();
 	private HashMap<String, TablaSimbolos> tablaSimbolos = new HashMap<String, TablaSimbolos>();
@@ -203,5 +205,5 @@ public class AnalisisSemantico {
 	
 	public boolean esOperador(String operador) {
 		return (operador.equals("+") || operador.equals("*") || operador.equals("/") || operador.equals("-")) || (operador.equals("&") || (operador.equals("&&") || operador.equals("|") || operador.equals("||") || operador.equals("!=")|| operador.equals("==")));
-	}
+	} 
 }

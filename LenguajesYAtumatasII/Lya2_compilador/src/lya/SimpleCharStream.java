@@ -1,5 +1,6 @@
 package lya;
 
+
 public class SimpleCharStream
 {
 /** Whether parser is static. */
