@@ -463,4 +463,5 @@ public class SimpleCharStream
     line = bufline[j];
     column = bufcolumn[j];
   }
+
 }

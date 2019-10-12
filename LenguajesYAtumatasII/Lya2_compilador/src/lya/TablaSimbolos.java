@@ -1,5 +1,5 @@
 package lya;
- 
+
 public class TablaSimbolos {
 	private String tipoDato;
 	private int posicion;
@@ -32,7 +32,7 @@ public class TablaSimbolos {
 	}
 	public String getAlcance() {
 		return alcance;
-	}
+	} 
 	public void setAlcance(String alcance) {
 		this.alcance = alcance;
 	}

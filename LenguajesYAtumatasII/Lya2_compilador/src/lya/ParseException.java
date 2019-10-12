@@ -15,10 +15,12 @@ public class ParseException extends Exception {
     tokenImage = tokenImageVal;
   }
 
+
   public ParseException() {
     super();
   }
 
+  /** Constructor with message. */
   public ParseException(String message) {
     super(message);
   }

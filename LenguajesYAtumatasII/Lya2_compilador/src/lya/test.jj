@@ -1,10 +1,10 @@
-options 
+options
 {
   	LOOKAHEAD = 2;
 	FORCE_LA_CHECK = true;
 }
 
-PARSER_BEGIN(test)
+PARSER_BEGIN(test) 
 	package MyAnalizador;
 	import java.util.*;
 	public class test{ 
