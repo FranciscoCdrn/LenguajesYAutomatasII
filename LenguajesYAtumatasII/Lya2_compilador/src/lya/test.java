@@ -39,8 +39,8 @@ public class test implements testConstants {
 			test analizador = new test(new FileReader("src/lya/codigo.txt"));
 			analizador.Programa();
 			AnalisisSemantico as = new AnalisisSemantico("src/lya/codigo.txt");
-			// AnalisisSemantico as= new
-			// AnalisisSemantico(analizador.jj_input_stream.GetImage());
+			//AnalisisSemantico as= new
+			//AnalisisSemantico(analizador.jj_input_stream.GetImage());
 			if (error.equals(""))
 				System.out.println("Exito, codigo correcto.");
 			else {
@@ -634,7 +634,7 @@ public class test implements testConstants {
 		return t;
 	}
 
-	@SuppressWarnings({ "static-access", "unused" })
+	@SuppressWarnings({ "unused", "static-access" })
 	static private int jj_ntk() {
 		if ((jj_nt = token.next) == null)
 			return (jj_ntk = (token.next = token_source.getNextToken()).kind);

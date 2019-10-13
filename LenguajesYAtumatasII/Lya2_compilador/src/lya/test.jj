@@ -9,7 +9,7 @@ PARSER_BEGIN(test)
 	import java.util.*;
 	public class test{ 
 		static class Identifier{
-			String name; 
+			String name;
 			String type;
 			String description;
 			String data;
@@ -100,7 +100,7 @@ void Programa(): {}
 {
 	class_declaration() 
 }
-
+/*
 void class_declaration(): {}{
  	try { 
 		<modifier> <class_word> class_identifier()
