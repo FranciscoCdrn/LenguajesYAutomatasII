@@ -7,9 +7,9 @@ options
 PARSER_BEGIN(test)
 	package MyAnalizador;
 	import java.util.*;
-	public class test{  
+	public class test{ 
 		static class Identifier{
-			String name;
+			String name; 
 			String type;
 			String description;
 			String data;

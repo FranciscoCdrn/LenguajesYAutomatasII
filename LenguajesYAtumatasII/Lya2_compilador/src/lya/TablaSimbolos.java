@@ -2,7 +2,7 @@ package lya;
 
 public class TablaSimbolos {
 	private String tipoDato;
-	private int posicion; 
+	private int posicion;
 	private Object valor;
 	private String alcance;
 
@@ -25,7 +25,7 @@ public class TablaSimbolos {
 		this.posicion = posicion;
 	}
 	public Object getValor() {
-		return valor;
+		return valor; 
 	}
 	public void setValor(String valor) {
 		this.valor = valor;

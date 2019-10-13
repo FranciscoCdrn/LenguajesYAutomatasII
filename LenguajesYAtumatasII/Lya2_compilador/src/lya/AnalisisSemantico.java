@@ -1,19 +1,19 @@
-ï»¿package lya;
- 
+package lya;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import lya.TablaSimbolos;
 
 public class AnalisisSemantico {
 	ArrayList<String> linea = new ArrayList<String>();
 	private HashMap<String, TablaSimbolos> tablaSimbolos = new HashMap<String, TablaSimbolos>();
 	private ArrayList<String> listaErroresSemanticos = new ArrayList<String>();
+	@SuppressWarnings("unused")
 	private ArrayList<String> operadoreslogicos = new ArrayList<>(), operadoresaritmeticos = new ArrayList<>();
 	/*
 	 * private ArrayList<String> listaErroresSemanticos; private ArrayList<String>
-
 	 */
 	public AnalisisSemantico(String URL) {
 		String codigo = LeeArchivo(URL);
@@ -23,6 +23,7 @@ public class AnalisisSemantico {
 			System.out.println(error);
 		}
 	}
+	@SuppressWarnings("resource")
 	public static String LeeArchivo(String URL) {
 		String parrafo = "", texto = "";
 		try {
@@ -130,6 +131,7 @@ public class AnalisisSemantico {
 		
 	}
 
+	@SuppressWarnings("unused")
 	public void Operaciones(String parrafo, int pos) {
 		String parrafoAux = "", variable = "", operandoAux="";
 		boolean variableEncontrada=false;
@@ -142,7 +144,7 @@ public class AnalisisSemantico {
 				variableEncontrada=true;
 				if (!tablaSimbolos.containsKey(variable)) {
 					listaErroresSemanticos
-							.add("La variable " + "'" + variable + "' en la posiciï¿½n " + pos + " no ha sido definida.");
+							.add("La variable " + "'" + variable + "' en la posición " + pos + " no ha sido definida.");
 				break;
 				}
 			} else { //se eliminan los espacios en blanco

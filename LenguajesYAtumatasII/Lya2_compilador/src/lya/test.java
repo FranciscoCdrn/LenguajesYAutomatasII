@@ -1,5 +1,4 @@
 package lya;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -34,6 +33,7 @@ public class test implements testConstants {
 	static String error = "";
 	static List<Identifier> symbols = new ArrayList<Identifier>();
 
+	@SuppressWarnings({ "static-access", "unused" })
 	public static void main(String[] args) throws ParseException, FileNotFoundException {
 		try {
 			test analizador = new test(new FileReader("src/lya/codigo.txt"));
@@ -94,6 +94,7 @@ public class test implements testConstants {
 		jj_consume_token(semicolon);
 	}
 
+	@SuppressWarnings("unused")
 	static final public String type() throws ParseException {
 		jj_consume_token(type_specifier);
 		{
@@ -114,6 +115,7 @@ public class test implements testConstants {
 		symbols.add(ident);
 	}
 
+	@SuppressWarnings("unused")
 	static final public String variable_identifier() throws ParseException {
 		jj_consume_token(identifier);
 		{
@@ -123,6 +125,7 @@ public class test implements testConstants {
 		throw new Error("Missing return statement in function");
 	}
 
+	@SuppressWarnings("unused")
 	static final public String variable_type() throws ParseException {
 		if (jj_2_1(2)) {
 			jj_consume_token(integer_literal);
@@ -407,6 +410,7 @@ public class test implements testConstants {
 	static public Token token;
 	/** Next token. */
 	static public Token jj_nt;
+	@SuppressWarnings("unused")
 	static private int jj_ntk;
 	static private Token jj_scanpos, jj_lastpos;
 	static private int jj_la;
@@ -460,6 +464,7 @@ public class test implements testConstants {
 	}
 
 	/** Reinitialise. */
+	@SuppressWarnings("static-access")
 	static public void ReInit(java.io.InputStream stream, String encoding) {
 		try {
 			jj_input_stream.ReInit(stream, encoding, 1, 1);
@@ -497,6 +502,7 @@ public class test implements testConstants {
 	}
 
 	/** Reinitialise. */
+	@SuppressWarnings("static-access")
 	static public void ReInit(java.io.Reader stream) {
 		jj_input_stream.ReInit(stream, 1, 1);
 		token_source.ReInit(jj_input_stream);
@@ -540,6 +546,7 @@ public class test implements testConstants {
 			jj_2_rtns[i] = new JJCalls();
 	}
 
+	@SuppressWarnings("static-access")
 	static private Token jj_consume_token(int kind) throws ParseException {
 		Token oldToken;
 		if ((oldToken = token).next != null)
@@ -567,11 +574,13 @@ public class test implements testConstants {
 		throw generateParseException();
 	}
 
+	@SuppressWarnings("serial")
 	static private final class LookaheadSuccess extends java.lang.Error {
 	}
 
 	static final private LookaheadSuccess jj_ls = new LookaheadSuccess();
 
+	@SuppressWarnings("static-access")
 	static private boolean jj_scan_token(int kind) {
 		if (jj_scanpos == jj_lastpos) {
 			jj_la--;
@@ -601,6 +610,7 @@ public class test implements testConstants {
 	}
 
 	/** Get the next Token. */
+	@SuppressWarnings("static-access")
 	static final public Token getNextToken() {
 		if (token.next != null)
 			token = token.next;
@@ -612,6 +622,7 @@ public class test implements testConstants {
 	}
 
 	/** Get the specific Token. */
+	@SuppressWarnings("static-access")
 	static final public Token getToken(int index) {
 		Token t = token;
 		for (int i = 0; i < index; i++) {
@@ -623,6 +634,7 @@ public class test implements testConstants {
 		return t;
 	}
 
+	@SuppressWarnings({ "static-access", "unused" })
 	static private int jj_ntk() {
 		if ((jj_nt = token.next) == null)
 			return (jj_ntk = (token.next = token_source.getNextToken()).kind);
