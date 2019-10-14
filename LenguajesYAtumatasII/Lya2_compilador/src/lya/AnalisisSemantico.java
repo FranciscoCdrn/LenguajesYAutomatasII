@@ -104,13 +104,13 @@ public class AnalisisSemantico {
 			// Validar si la variable ya esta declarada
 			if (tablaSimbolos.containsKey(variable))
 				listaErroresSemanticos
-						.add("La variable " + "'" + variable + "'" + " ya se encuentra declarada en el renglon "
+						.add("La variable " + "'" + variable + "'" + " ya se encuentra declarada en la posición "
 								+ tablaSimbolos.get(variable).getPosicion() + ".");
 			else {
 				// Verificando el valor asignado con el tipo
 				if (!verificaTipoConValor(Tipo.toString(), valor)) {
 					listaErroresSemanticos.add("Imposible asignar a variable " + "'" + variable + "' Tipo ("
-							+ Tipo.toString() + ") valor:  " + valor + " renglon " + pos + ".");
+							+ Tipo.toString() + ") valor:  " + valor + " posicion " + pos + ".");
 					return;
 				}
 				if (parrafo.contains(sPublic) || parrafo.contains(sPrivate)) {
@@ -177,7 +177,7 @@ public class AnalisisSemantico {
 					if (tablaSimbolos.containsKey(parrafoAux)) { // Es variable
 						if (!tablaSimbolos.get(parrafoAux).getTipoDato()
 								.equals(tablaSimbolos.get(variable).getTipoDato())) {
-							listaErroresSemanticos.add("Tipo de operacion incorrecta variable " + variable + " Tipo ("
+							listaErroresSemanticos.add("Tipo de operacion incorrecta en l variable " + variable + " Tipo ("
 									+ tablaSimbolos.get(variable).getTipoDato() + ") con variable " + parrafoAux
 									+ " Tipo ( " + tablaSimbolos.get(parrafoAux) + ")");
 							break;
@@ -191,7 +191,7 @@ public class AnalisisSemantico {
 																													// de
 																													// operador
 																													// correco
-								listaErroresSemanticos.add("Tipo de operacion incorrecta variable " + variable
+								listaErroresSemanticos.add("Tipo de operacion incorrecta en l variable " + variable
 										+ " Tipo (" + tablaSimbolos.get(variable).getTipoDato() + ") con operador "
 										+ parrafoAux);
 								break;
@@ -216,7 +216,7 @@ public class AnalisisSemantico {
 			// Verificamos si es una variable
 			if (tablaSimbolos.containsKey(parrafoAux)) { // Es variable
 				if (!tablaSimbolos.get(parrafoAux).getTipoDato().equals(tablaSimbolos.get(variable).getTipoDato())) {
-					listaErroresSemanticos.add("Tipo de operacion incorrecta variable " + variable + " Tipo ("
+					listaErroresSemanticos.add("Tipo de operacion incorrecta  en l variable " + variable + " Tipo ("
 							+ tablaSimbolos.get(variable).getTipoDato() + ") con variable " + parrafoAux + " Tipo ( "
 							+ tablaSimbolos.get(parrafoAux) + ")");
 				}
@@ -226,13 +226,13 @@ public class AnalisisSemantico {
 																											// tipo de
 																											// operador
 																											// correco
-						listaErroresSemanticos.add("Tipo de operacion incorrecta variable " + variable + " Tipo ("
+						listaErroresSemanticos.add("Tipo de operacion incorrecta en l variable " + variable + " Tipo ("
 								+ tablaSimbolos.get(variable).getTipoDato() + ") con operador " + parrafoAux);
-					}
+/************/	}
 				} else {// Es una constante
 					if (!verificaTipoConValor(tablaSimbolos.get(variable).getTipoDato(), parrafoAux)) {
-						listaErroresSemanticos.add("Tipo de operacion incorrecta variable " + variable + " Tipo ("
-								+ tablaSimbolos.get(variable).getTipoDato() + ") con " + parrafoAux);
+						listaErroresSemanticos.add("Tipo de operacion incorrecta en la variable " + variable + " Tipo ("
+								+ tablaSimbolos.get(variable).getTipoDato() + ") con (" + parrafoAux+") en la posición "+pos);
 					}
 				}
 			}

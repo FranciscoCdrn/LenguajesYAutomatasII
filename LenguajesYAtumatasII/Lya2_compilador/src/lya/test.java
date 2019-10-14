@@ -44,12 +44,12 @@ public class test implements testConstants {
 			if (error.equals(""))
 				System.out.println("Exito, codigo correcto.");
 			else {
-				System.out.println("Error, algo anda mal: ");
-				System.out.println(error);
+//---------------System.out.println("Error, algo anda mal: ");
+//---------------System.out.println(error);
 			}
-			System.out.println("Identificadores encontrados: ");
+//---------------System.out.println("Identificadores encontrados: ");
 			for (Identifier i : symbols) {
-				System.out.println(i.toString());
+//---------------System.out.println(i.toString());
 			}
 		} catch (ParseException e) {
 			System.out.println(e.getMessage());
