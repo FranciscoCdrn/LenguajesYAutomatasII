@@ -38,9 +38,9 @@ public class AnalisisSemantico {
 		imprimeTabla();*/
 		
 		System.out.println("----------------------");
-		/*for(int i=0;i<e.size();i++) {
+		for(int i=0;i<e.size();i++) {
 			System.out.println(e.get(i).getNum() + " " + e.get(i).getOp());
-		}*/
+		}
 	}
 
 	public void triplos() { // Generación de triplos
@@ -82,8 +82,7 @@ public class AnalisisSemantico {
 						// Cuando la longitud es 2, se realiza la operacion con el operando y el ultimo
 						// triplo
 						if (operacionAux.length() == 2) {
-							System.out.println(cont);
-							triplo = Character.toString(operacionAux.charAt(1)) +Character.toString(operacionAux.charAt(0))+ t.get(cont - 2).getNum();
+							triplo =Character.toString(operacionAux.charAt(1))+Character.toString(operacionAux.charAt(0))+ t.get(cont - 2).getNum();
 							t.add(new Triplo("T" + cont, triplo));
 							operacionAux = operacionAux.replace(Character.toString(operacionAux.charAt(0))
 									+ Character.toString(operacionAux.charAt(1)), "");
@@ -95,7 +94,7 @@ public class AnalisisSemantico {
 								t.add(new Triplo("T" + cont, triplo));
 								operacionAux = operacionAux.replace(triplo, "");
 								cont++;
-							} else {
+							}else { 
 								// Si es un operador y su antecesor es un operador se realiza la operacion con
 								// los dos ultimos triplos
 								if (esOperador(operacionAux.charAt(operacionAux.length() - 2))) {
@@ -141,9 +140,7 @@ public class AnalisisSemantico {
 				//verificamos si contiene un numero negativo
 				if((operacionAux.contains("-")) && esOperador(operacionAux.charAt(operacionAux.indexOf("-") - 1))) {
 							pos=operacionAux.indexOf("-");
-							t.add(new Triplo("MOV","AL, 1"));
-							t.add(new Triplo("MOV","BL, T"+cont));
-							t.add(new Triplo("SUB ","BL, AL"));
+							e.add(new Ensamblador("MOV ","AL, "+Character.toString(operacionAux.charAt(pos))+Character.toString(operacionAux.charAt(pos+1))));
 							operacionAux = operacionAux.replace(Character.toString(operacionAux.charAt(pos))+Character.toString(operacionAux.charAt(pos+1)), "");
 							cont++;
 				}
@@ -155,37 +152,66 @@ public class AnalisisSemantico {
 						triplo = triplo + operacionAux.charAt(pos);
 						pos++;
 					}
-					System.out.println("triplo"+triplo);
+					ope1=triplo.substring(0,1);
+					ope2=triplo.substring(2,3);
+					e.add(new Ensamblador("MOV ","BL, "+ope1));
+					e.add(new Ensamblador("MOV ","CL, "+ope2));
 					if (triplo.contains("+")) {
-						ope1=triplo.substring(0,1);
-						ope2=triplo.substring(2,3);
-						t.add(new Triplo("MOV","AL "+ope1));
-						t.add(new Triplo("MOV","CL "+ope2));
-						t.add(new Triplo("SUM ","AL, CL"));
+						e.add(new Ensamblador("SUM ","BL, CL"));
 					}
-					if (operacionAux.contains("-")) {
-						System.out.print("resta");
+					if (triplo.contains("-")) {
+						e.add(new Ensamblador("SUB ","BL, CL"));
+					}
+					if (triplo.contains("*")) {
+						e.add(new Ensamblador("MUL ","BL, CL"));
+					}
+					if (triplo.contains("/")) {
+						e.add(new Ensamblador("DIV ","BL, CL"));
 					}
 					operacionAux = operacionAux.replace("(", "");
 					operacionAux = operacionAux.replace(")", "");
-					
-					t.add(new Triplo("T" + cont, triplo));
 					cont++;
 					operacionAux = operacionAux.replace(triplo, "");
 				} else {
 					// cuando la longitud es de 1, se realiza la operacion con los dos ultimos
 					// triplos
+					//MULTIPLICACION
 					if (operacionAux.length() == 1) {
-						triplo = t.get(cont-3).getNum() + operacionAux.charAt(0) + t.get(cont-2).getNum();
-						t.add(new Triplo("T" + cont, triplo));
+						triplo = e.get(cont-3).getNum() + operacionAux.charAt(0) + e.get(cont-2).getNum();
+						if (triplo.contains("+")) {
+							e.add(new Ensamblador("SUM ", "BL, AL"));
+						}
+						if (triplo.contains("-")) {
+							e.add(new Ensamblador("SUB ", "BL, AL"));
+						}
+						if (triplo.contains("*")) {
+							e.add(new Ensamblador("MUL ", "BL, AL"));
+						}
+						if (triplo.contains("/")) {
+							e.add(new Ensamblador("DIV ", "BL, AL"));
+						}		
 						operacionAux = operacionAux.replace(Character.toString(operacionAux.charAt(0)), "");
 					} else {
 						// Cuando la longitud es 2, se realiza la operacion con el operando y el ultimo
 						// triplo
 						if (operacionAux.length() == 2) {
-							System.out.println(cont);
-							triplo = Character.toString(operacionAux.charAt(1))+Character.toString(operacionAux.charAt(0)) + t.get(cont - 2).getNum();
-							t.add(new Triplo("T" + cont, triplo));
+							triplo =Character.toString(operacionAux.charAt(1))+Character.toString(operacionAux.charAt(0))+ e.get(cont - 2).getNum();
+							
+							ope1=triplo.substring(0,1);
+							e.add(new Ensamblador("MOV ","CL, "+ope1));
+							if (triplo.contains("+")) {
+								e.add(new Ensamblador("SUM ","BL, CL"));
+							}
+							if (triplo.contains("-")) {
+								e.add(new Ensamblador("SUB ","BL, CL"));
+							}
+							if (triplo.contains("*")) {
+								e.add(new Ensamblador("MUL ","BL, CL"));
+							}
+							if (triplo.contains("/")) {
+								e.add(new Ensamblador("DIV ","BL, CL"));
+							}
+							
 							operacionAux = operacionAux.replace(Character.toString(operacionAux.charAt(0))
 									+ Character.toString(operacionAux.charAt(1)), "");
 							cont++;
@@ -193,16 +219,27 @@ public class AnalisisSemantico {
 							// Si es un operando se hace un triplo
 							if (!esOperador(operacionAux.charAt(operacionAux.length() - 1))) {
 								triplo = Character.toString(operacionAux.charAt(operacionAux.length() - 1));
-								t.add(new Triplo("T" + cont, triplo));
+								e.add(new Ensamblador("T" + cont, triplo));
 								operacionAux = operacionAux.replace(triplo, "");
 								cont++;
 							} else {
 								// Si es un operador y su antecesor es un operador se realiza la operacion con
 								// los dos ultimos triplos
 								if (esOperador(operacionAux.charAt(operacionAux.length() - 2))) {
-									triplo = t.get(cont - 3).getNum() + Character.toString(operacionAux.charAt(operacionAux.length() - 1))
-											+ t.get(cont - 2).getNum();
-									t.add(new Triplo("T" + cont, triplo));
+									triplo = e.get(cont - 3).getNum() + Character.toString(operacionAux.charAt(operacionAux.length() - 1))
+											+ e.get(cont - 2).getNum();
+									if (triplo.contains("+")) {
+										e.add(new Ensamblador("SUM ", "AL, BL"));
+									}
+									if (triplo.contains("-")) {
+										e.add(new Ensamblador("SUB ", "AL, BL"));
+									}
+									if (triplo.contains("*")) {
+										e.add(new Ensamblador("MUL ", "AL, BL"));
+									}
+									if (triplo.contains("/")) {
+										e.add(new Ensamblador("DIV ", "AL, BL"));
+									}
 									operacionAux = operacionAux.substring(0, operacionAux.length() - 1);
 									/*operacionAux = operacionAux.replace(
 											Character.toString(operacionAux.charAt(operacionAux.length() - 1)), "");*/
@@ -213,7 +250,22 @@ public class AnalisisSemantico {
 										triplo = Character.toString(operacionAux.charAt(0))
 												+ Character.toString(operacionAux.charAt(1))
 												+ Character.toString(operacionAux.charAt(2));
-										t.add(new Triplo("T" + cont, triplo));
+										ope1=triplo.substring(0,1);
+										ope2=triplo.substring(2,3);
+										e.add(new Ensamblador("MOV ","BL, "+ope1));
+										e.add(new Ensamblador("MOV ","CL, "+ope2));
+										if (triplo.contains("+")) {
+											e.add(new Ensamblador("SUM ","DL, CL"));
+										}
+										if (triplo.contains("-")) {
+											e.add(new Ensamblador("SUB ","DL, CL"));
+										}
+										if (triplo.contains("*")) {
+											e.add(new Ensamblador("MUL ","DL, CL"));
+										}
+										if (triplo.contains("/")) {
+											e.add(new Ensamblador("DIV ","DL, CL"));
+										}
 										operacionAux = operacionAux.replace(triplo, "");
 										cont++;
 									}
